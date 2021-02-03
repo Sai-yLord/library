@@ -1,0 +1,4 @@
+# команда для загрузки изменений на github
+git add .
+git commit -m "comments of commit"
+git push
