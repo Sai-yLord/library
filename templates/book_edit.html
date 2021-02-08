@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+</head>
+<body>
+    <h3>Редактировать запись:</h3>
+    <form action="{{ url_for('book_save', num=obj.3) }}" method="POST">
+        <input type="text" name="tale" placeholder="Название книги" value="{{ obj.0 }}">
+        <br><br>
+        <input type="text" name="author" placeholder="Автор" value="{{ obj.1 }}">
+        <br><br>
+        <input type="text" name="image" placeholder="Ссылка на картинку" value="{{ obj.2 }}">
+        <br><br>
+        <button>Сохранить</button>
+    </form>
+</body>
+</html>

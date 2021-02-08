@@ -11,6 +11,22 @@
 
 </head>
 <body>
+    <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('homepage') }}">Домой</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ url_for('authors') }}">Авторы</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('books') }}">Книги</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">О сайте</a>
+            </li>
+        </ul>
+    </nav>
     <div class="container-fluid">
         <a href="{{ url_for('authors') }}">Авторы</a>
         <a id="book" href="{{ url_for('books') }}">Книги</a>
@@ -22,6 +38,9 @@
             {% if obj.2 %}
                 <img src="{{ obj.2 }}" alt="tale_photo">
             {% endif %}
+            <br><br>
+            <a class="btn btn-warning btn-lg" href="{{ url_for('book_edit', num=obj.3) }}">Изменить</a>
+            <br><br>
         </div>
     </div>
 </body>
