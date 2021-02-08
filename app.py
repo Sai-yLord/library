@@ -46,12 +46,20 @@ def authors():
 @app.route("/add/", methods=["POST"])
 def add():
     f = request.form
-    print(f["author"], f["book"])
-    print(f["author"], f["book"])
     excel = load_workbook("tales1.xlsx")
     page = excel["Лист1"]
     last = len(page["A"]) + 1
     page[f"A{last}"] = f["book"]
-    page[f"B{last}"] = f["authors"]
+    page[f"B{last}"] = f["author"]
     excel.save("tales1.xlsx")
     return "форма получена"
+
+@app.route("/book<num>")
+def book(num):
+    excel = load_workbook("tales1.xlsx")
+    page = excel["Лист1"]
+    object_list = [[tale.value, tale.offset(column=1).value, tale.offset(column=2).value] for tale in page["A"][1:]]
+    obj = object_list[int(num)]
+    link_list = [[tale.value, tale.offset(column=1).value, tale.offset(column=2).value] for tale in page["D"][1:]]
+    link = link_list[int(num)]
+    return render_template("book.htm", obj=obj)
