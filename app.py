@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request
 from openpyxl import load_workbook
+from sqlalchemy.orm.session import sessionmaker 
+from database import engine, Book
 
 app = Flask(__name__)
 
@@ -10,11 +12,16 @@ def homepage():
 
 @app.route("/books/")
 def books():
-    excel = load_workbook("tales1.xlsx")
-    page = excel["Лист1"]
+    # excel = load_workbook("tales1.xlsx")
+    # page = excel["Лист1"]
 
-    object_list = [[tale.value, tale.offset(column=1).value] for tale in page["A"][1:]]
-    return render_template("books.htm", object_list=object_list)
+    # object_list = [[tale.value, tale.offset(column=1).value] for tale in page["A"][1:]]
+    # return render_template("books.htm", object_list=object_list)
+    session = sessionmaker(engine)()
+    books = session.query(Book)
+    print(books)
+    session.commit()
+    return render_template("books_table.html", object_list=books)
 
 @app.route("/authors/")
 def authors():
@@ -47,7 +54,7 @@ def book(num):
 
 @app.route("/book/<num>/edit/")
 def book_edit(num):
-    num = int(num) + 2
+    num = int(num) + 2                                                                        
     excel_file = load_workbook("tales1.xlsx")
     page = excel_file["Лист1"]
     tale = page[f"A{num}"]
