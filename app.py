@@ -29,6 +29,11 @@ def authors():
     page = excel["Лист1"]
     authors = {author.value for author in page["B"][1:]}
     return render_template("authors.html", authors=authors)
+
+# @app.route("db/authors/")
+# def authors():
+#     authors = {author.value for author in page["B"][1:]}
+#     return render_template("authors.html", authors=authors)
     
 
 @app.route("/add/", methods=["POST"])
