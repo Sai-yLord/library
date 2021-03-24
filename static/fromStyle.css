@@ -9,7 +9,7 @@ h1 {
     text-align: center;
     font-weight: 100;
     font-size: 2.8em;
-    color: #000;
+    color: purple;
 }
   
 div {
@@ -35,15 +35,15 @@ div {
   
 .formButton {
     float: right;
-      background-color: #000;
-      display:inline-block;
-      color:#2ecc71;
-      font-size:28px;
-      font-weight: 500;
-      padding:6px 24px;
+    background-color: #000;
+    display:inline-block;
+    color:#2ecc71;
+    font-size:28px;
+    font-weight: 500;
+    padding:6px 24px;
     margin-top: 15px;
     margin-right: 60px;
-      text-decoration:none;
+    text-decoration:none;
 }
   
   
@@ -58,8 +58,9 @@ div {
 }
   
  
-input:focus {
+input {
     outline: none;
+    color: black;
 }
   
   

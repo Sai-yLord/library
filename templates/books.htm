@@ -55,7 +55,7 @@
     <!-- <h1 align="center" style="color: red">Тут будет список книг:</h1> -->
     {% for object in object_list %}
         <h3>
-            <a href="{{ url_for('book', num=loop.index-1)  }}">
+            <a href="{{ url_for('db_book', id=object.id)  }}">
                 {{object.0 }} - {{object.1}}
             </a>
         </h3>
